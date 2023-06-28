@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
 
 
-router.get('/login', (req, res) => {
+router.get('/', (req, res) => {
 
     res.render("home/login", { message: ""});
 })

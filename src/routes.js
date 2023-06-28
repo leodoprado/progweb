@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const accessValidation = require('@middleware/accessValidation')
-const homePageController = require('./controller/homePage');
 const loginPageController = require('./controller/loginPage');
-const esqueceusenhaPageController = require('@controller/loginPage');
 const admPagePerfilController = require('./controller/adm/admPagePerfil');
 const admPageGerencialController = require('@controller/adm/admPageGerencial');
 const admPageCreateController = require('@controller/adm/admPageCreate');
@@ -21,14 +19,11 @@ const moradorPageComunicadosController = require('@controller/adm/admPageComunic
 const moradorPageAgendaController = require('@controller/morador/moradorPageAgenda');
 const create = require('@controller/loginPage');
 
-router.get('/', homePageController);
-router.get('/login', loginPageController);
+router.get('/', loginPageController);
 router.post('/authenticate', loginPageController);
 router.get('/logout', loginPageController);
 router.get('/create', create);
 router.post('/create/user', create);
-router.get('/central-de-ajuda', homePageController);
-router.get('/assinatura-do-software', homePageController);
 router.get('/login/morador/perfil/:idUsuario', accessValidation ,moradorPagePerfilController);
 router.post('/login/morador/perfil/:idUsuario', accessValidation ,moradorPagePerfilController);
 router.get('/login/morador/gerencial', accessValidation, moradorPageGerencialController);
