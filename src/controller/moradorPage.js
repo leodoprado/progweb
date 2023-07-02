@@ -8,6 +8,42 @@ router.get('/login/morador', (req, res) => {
     })
 })
 
+router.get('/login/morador/create', (req, res) => {
+    res.render("log/adm/createAdministrador")
+})
+
+router.post('/login/morador/create/success', (req, res) => {
+    var nome = req.body.nome;
+    var apartamento = req.body.apartamento
+    var garagem = req.body.garagem;
+    var email = req.body.email;
+    var telefone = req.body.telefone;
+
+    Usuario.findOne({where:{idUsuario: idUsuario}}).then(user => {
+        if(user == undefined){
+            var salt = bcrypt.genSaltSync(10);
+            var hash = bcrypt.hashSync(senha, salt)
+
+            Usuario.create({
+                nome: nome,
+                datanascimento: datanascimento,
+                cpf: cpf,
+                email: email,
+                telefone1: telefone1,
+                nivelAcesso: nivelAcesso,
+                idUsuario: idUsuario,
+                senha: hash
+            }).then(() => {
+                res.redirect("/login/administrador/gerencial/create")
+            }).catch((err) => {
+                res.redirect("/login/administrador/gerencial/create")
+            });
+        } else {
+            res.redirect("/login/administrador/gerencial/create");
+        }
+    })
+})
+
 router.get('/login/administrador/gerencial/update', (req, res) => {
     res.render("log/morador")
 })
