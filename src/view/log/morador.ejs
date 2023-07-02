@@ -36,18 +36,16 @@
                     <th>ID Usuário</th>
                     <th>Nome</th>
                     <th>Apartamento</th>
-                    <th>Garagem</th>
                     <th>Email</th>
                     <th>Telefone</th>
                 </tr>
                 <% moradores.forEach(all => { %>
                     <tr>
-                        <td><%= all.idUsuario %> </td>
-                        <td><%= all.nivelAcesso %></td>
-                        <td><%= all.nome %></td>
-                        <td><%= all.datanascimento %></td>
-                        <td><%= all.email %></td>
-                        <td><%= all.telefone1 %></td>
+                        <td><%= all.MOR_ID %> </td>
+                        <td><%= all.MOR_NOME %></td>
+                        <td><%= all.MOR_APARTAMENTO %></td>
+                        <td><%= all.MOR_EMAIL %></td>
+                        <td><%= all.MOR_TELEFONE %></td>
                     </tr>
                     <% }) %>
             </table>

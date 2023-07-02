@@ -1,46 +1,34 @@
 const express = require("express")
 const router = express.Router()
 const Usuario = require("@model/usuarioModel");
+const Morador = require('@model/moradorModel');
 
 router.get('/login/morador', (req, res) => {
-    Usuario.findAll().then(function(moradores){
+    Morador.findAll().then(function(moradores){
         res.render("log/morador", {moradores: moradores})
     })
 })
 
-router.get('/login/morador/create', (req, res) => {
-    res.render("log/adm/createAdministrador")
+router.get('/login/morador/adicionar', (req, res) => {
+    res.render("log/adicionarMorador")
 })
 
-router.post('/login/morador/create/success', (req, res) => {
+router.post('/login/morador/adicionar', (req, res) => {
     var nome = req.body.nome;
     var apartamento = req.body.apartamento
-    var garagem = req.body.garagem;
     var email = req.body.email;
     var telefone = req.body.telefone;
 
-    Usuario.findOne({where:{idUsuario: idUsuario}}).then(user => {
-        if(user == undefined){
-            var salt = bcrypt.genSaltSync(10);
-            var hash = bcrypt.hashSync(senha, salt)
+    var id = req.params.MOR_ID;
 
-            Usuario.create({
-                nome: nome,
-                datanascimento: datanascimento,
-                cpf: cpf,
-                email: email,
-                telefone1: telefone1,
-                nivelAcesso: nivelAcesso,
-                idUsuario: idUsuario,
-                senha: hash
-            }).then(() => {
-                res.redirect("/login/administrador/gerencial/create")
-            }).catch((err) => {
-                res.redirect("/login/administrador/gerencial/create")
-            });
-        } else {
-            res.redirect("/login/administrador/gerencial/create");
-        }
+    Morador.create({
+        MOR_NOME: nome,
+        MOR_APARTAMENTO: apartamento,
+        MOR_EMAIL: email,
+        MOR_TELEFONE: telefone,
+        USR_ID: id
+    }).then(() => {
+        res.redirect("/login/morador/")
     })
 })
 

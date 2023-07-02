@@ -1,32 +1,36 @@
 const Sequelize = require ('sequelize');
 const connection = require('@database/db');
 
-const Comunicados = connection.define('comunicados', {
-    idComunicado: {
+const Morador = connection.define('morador', {
+    MOR_ID: {
         type: Sequelize.INTEGER,
-        primaryKey: true,
         allowNull: false,
+        primaryKey: true,
         autoIncrement: true
     },
-    titulo: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    assunto: {
+    MOR_NOME: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    texto: {
+    MOR_APARTAMENTO: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    dataenvio: {
+    MOR_EMAIL: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    MOR_TELEFONE: {
+        type: Sequelize.STRING,
+        allowNull: true
     }
-})
+}, {
+    freezeTableName: true,
+    timestamps: false
+}
+)
 
-// Sincronizando o model com o banco de dados
- Comunicados.sync({force: false});
+// Sincronizando model com banco de dados
+ Morador.sync({force: false});
 
-module.exports = Comunicados;
+module.exports = Morador;
