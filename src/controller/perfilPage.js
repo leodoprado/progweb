@@ -54,7 +54,7 @@ router.post('/login/perfil/:USR_ID', (req, res) => {
         });
         console.log(nome)
         res.clearCookie('USR_ID');
-        res.redirect('/login/perfil/:USR_ID');
+        res.redirect('/login/perfil/1');
     } else {
         res.render('log/perfil', { result : req.body})
     }
