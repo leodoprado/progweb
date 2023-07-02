@@ -6,32 +6,28 @@ const flash = require('connect-flash');
 
 
 router.get('/', (req, res) => {
-
-    res.render("home/login", { message: ""});
+    res.render("home/login");
 })
 
 router.post('/authenticate', (req, res) => {
-    
-    var nivelAcesso = req.body.nivelAcesso;
-    var idUsuario = req.body.login;
-    var senha = req.body.senha;
 
-    Usuario.findOne({where:{idUsuario: idUsuario}}).then(user => {
+    var emailUsuario = req.body.emailUsuario;
+    var senhaUsuario = req.body.senhaUsuario;
+
+    Usuario.findOne({where:{USR_EMAIL: emailUsuario}}).then(user => {
         var UsuarioExiste = (user != undefined)
-        var Acesso = (nivelAcesso == user.nivelAcesso)
-        if(UsuarioExiste && Acesso){
-                var correctSenha = bcrypt.compareSync(senha, user.senha);
+        if(UsuarioExiste){
+                var correctSenha = bcrypt.compareSync(senhaUsuario, user.USR_SENHA);
                 if(correctSenha){
                     req.session.user = {
-                        idUsuario: user.idUsuario,
-                        nivelAcesso: user.nivelAcesso
+                        USR_EMAIL: user.emailUsuario,
                     }
-                res.redirect(`/login/${nivelAcesso}/perfil/${user.idUsuario}`);
+                res.redirect(`/login/perfil/${user.USR_ID}`);
             }else{
-                res.redirect('/login');
+                res.redirect('/');
             }
         } else {
-            res.redirect('/login');
+            res.redirect('/');
         }
     })
 })
@@ -42,31 +38,33 @@ router.get('/logout', (req, res) => {
 })
 
 // Vai ser alterado para a devida rota protegida
-router.get('/create', (req, res) => {
-    res.render("home/create")
+router.get('/register', (req, res) => {
+    res.render("home/register")
 })
 
-router.post('/create/user', (req, res) => {
-    var nivelAcesso = req.body.nivelAcesso;
-    var idUsuario = req.body.login;
-    var senha = req.body.senha;
+router.post('/register/user', (req, res) => {
+    var nomeUsuario = req.body.nomeUsuario;
+    var cpfUsuario = req.body.cpfUsuario;
+    var emailUsuario = req.body.emailUsuario;
+    var senhaUsuario = req.body.senhaUsuario;
 
-    Usuario.findOne({where:{idUsuario: idUsuario}}).then(user => {
+    Usuario.findOne({where:{USR_NOME:nomeUsuario, USR_CPF:cpfUsuario, USR_EMAIL: emailUsuario}}).then(user => {
         if(user == undefined){
             var salt = bcrypt.genSaltSync(10);
-            var hash = bcrypt.hashSync(senha, salt)
+            var hash = bcrypt.hashSync(senhaUsuario, salt)
 
             Usuario.create({
-                nivelAcesso: nivelAcesso,
-                idUsuario: idUsuario,
-                senha: hash
+                USR_NOME: nomeUsuario,
+                USR_CPF: cpfUsuario,
+                USR_EMAIL: emailUsuario,
+                USR_SENHA: hash
             }).then(() => {
-                res.redirect("/login")
+                res.redirect("/")
             }).catch((err) => {
-                res.redirect("/login")
+                res.redirect("/")
             });
         } else {
-            res.redirect("/create");
+            res.redirect("/");
         }
     })
 })

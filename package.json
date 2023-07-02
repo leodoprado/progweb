@@ -1,21 +1,21 @@
 {
-  "name": "comdominio",
+  "name": "controlwise",
   "version": "1.0.0",
-  "description": "Condomínio Web",
+  "description": "Control Wise",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leodoprado/progweb.git"
+    "url": "git+https://github.com/leodoprado/controlwise.git"
   },
   "author": "Leonardo do Prado",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leodoprado/progweb/issues"
+    "url": "https://github.com/leodoprado/controlwise/issues"
   },
-  "homepage": "https://github.com/leodoprado/progweb#readme",
+  "homepage": "https://github.com/leodoprado/controlwise#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
@@ -24,12 +24,10 @@
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
-    "jest": "^29.5.0",
     "migrate": "^1.8.0",
     "module-alias": "^2.2.2",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.19.2",
-    "supertest": "^6.3.3"
+    "sequelize": "^6.19.2"
   },
   "_moduleAliases": {
     "@": "src",

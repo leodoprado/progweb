@@ -2,83 +2,71 @@ const Sequelize = require ('sequelize');
 const connection = require('@database/db');
 
 const Usuario = connection.define('usuario', {
-    idUsuario: {
+    USR_ID: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
-    senha: {
+    USR_NOME: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    nivelAcesso: {
+    USR_DATANASC: {
+        type: Sequelize.DATEONLY,
+        allowNull: true
+    },
+    USR_CPF: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    nome: {
+    USR_RG: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    USR_EMAIL: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    datanascimento: {
+    USR_SENHA: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    cpf: {
+    USR_TELEFONE: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
-    rg: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: "0"
+    USR_CIDADE: {
+        type: Sequelize.STRING,
+        allowNull: true
     },
-    estadocivil: {
+    USR_CEP: {
         type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "-"
+        allowNull: true
     },
-    sexo: {
+    USR_ENDERECO: {
         type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "-"
+        allowNull: true
     },
-    pais: {
+    USR_BAIRRO: {
         type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "-"
+        allowNull: true
     },
-    cidadenatal: {
+    USR_REFERENCIA: {
         type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "-"
+        allowNull: true
     },
-    estado: {
+    USR_COMPLEMENTO: {
         type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "--"
-    },
-    email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "-"
-    },
-    emailcomplementar: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "-"
-    },
-    telefone1: {
-        type: Sequelize.STRING,
-        allowNull: false
-    }, 
-    telefone2: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "(00)00000-0000"
+        allowNull: true
     }
-})
+}, {
+    freezeTableName: true,
+    timestamps: false
+}
+)
 
 // Sincronizando model com banco de dados
-// Usuario.sync({force: false});
+ Usuario.sync({force: false});
 
 module.exports = Usuario;

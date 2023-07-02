@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Condomínio Web</title>
-    <link rel="stylesheet" href="/css/home/login.css">
-    <link rel="icon" type="imagem/png" href="/src/public/img/home/favicon.ico"/>
+    <link rel="stylesheet" href="/css/home/register.css">
+    <link rel="icon" type="imagem/png" href="/img/home/favicon.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,18 +19,25 @@
                     <h1>Condomínio Web</h1>
                 </a>
             </div>
-            <form action="/authenticate" method="POST">
-                <div class="ContainerInput">
-                    <label for="">E-mail<input name="emailUsuario" type="text" placeholder="Informe seu e-mail de acesso" required></label>
+            <form action="/register/user" method="POST">
+                <div class="ContainerContentInput">
+                    <div class="ContainerInput">
+                        <label for="">Nome<input name="nomeUsuario" type="text" placeholder="Informe seu nome"></label>
+                    </div>
+                    <div class="ContainerInput">
+                        <label for="">CPF<input name="cpfUsuario" type="text" placeholder="Informe seu CPF"></label>
+                    </div>
                 </div>
                 <div class="ContainerInput">
-                    <label for="">Senha<input name="senhaUsuario" type="password" placeholder="Informe sua senha cadastrada" required></label>
+                    <label for="">E-mail<input name="emailUsuario" type="text" placeholder="Informe seu e-mail principal"></label>
                 </div>
-                <button type="submit">Login</button>
+                <div class="ContainerInput">
+                    <label for="">Senha<input name="senhaUsuario" type="password" placeholder="Informe sua senha"></label>
+                </div>
+                <button type="submit">Registrar</button>
             </form>
             <div class="ContainerLink">
-                <a id="cadastre-se" href="/register">Não tem uma conta? Cadastre-se</a>
-                <a id="esqueceu-senha" href="/forgotpass">Esqueceu sua senha?</a>
+                <a id="login" href="/">Já possui uma conta? Faça o Login</a>
             </div>
         </div>
     </div>

@@ -34,19 +34,9 @@ h1 {
     color: white;
 }
 
-#cadastre-se {
-    font-size: 0.8rem;
-    margin-bottom: 0.3rem;
-    color: #0185bc;    
-}
-
-#esqueceu-senha {
+#voltar {
     font-size: 0.8rem;
     color: #0185bc;
-}
-
-.ContainerLogo {
-    margin-bottom: 1rem;
 }
 
 .LinkLogo { 
@@ -67,6 +57,14 @@ h1 {
     color: White;
     font-weight: 700;
     font-size: 2rem;
+}
+
+.TittleForgotPass {
+    color: white;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .ContainerInput {

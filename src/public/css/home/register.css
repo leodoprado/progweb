@@ -34,15 +34,10 @@ h1 {
     color: white;
 }
 
-#cadastre-se {
+#login {
     font-size: 0.8rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     color: #0185bc;    
-}
-
-#esqueceu-senha {
-    font-size: 0.8rem;
-    color: #0185bc;
 }
 
 .ContainerLogo {
@@ -67,6 +62,13 @@ h1 {
     color: White;
     font-weight: 700;
     font-size: 2rem;
+}
+
+.ContainerContentInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 .ContainerInput {
@@ -138,6 +140,3 @@ button:hover {
     font-size: 0.8rem;
     color: #0185bc;
 }
-
-
-  

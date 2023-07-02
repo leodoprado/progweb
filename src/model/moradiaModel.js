@@ -38,6 +38,6 @@ Moradia.belongsTo(Usuario, {
 })
 
 // Sincronizando o model com o banco de dados
-// Moradia.sync({force: false});
+ Moradia.sync({force: false});
 
 module.exports = Moradia;
