@@ -15,8 +15,9 @@ router.post('/login/perfil/:USR_ID', accessValidation, perfilPageController);
 
 
 router.get('/login/morador',accessValidation ,moradorPageController);
-router.get('/login/administrador/gerencial/create', accessValidation ,moradorPageController);
-router.post('/login/administrador/gerencial/create/success', moradorPageController);
+router.get('/login/morador/adicionar', accessValidation ,moradorPageController);
+router.post('/login/morador/adicionar/', moradorPageController);
+
 router.get('/login/administrador/gerencial/delete', accessValidation ,moradorPageController);
 router.post('/login/administrador/gerencial/delete', accessValidation ,moradorPageController);
 router.get('/login/administrador/gerencial/delete/:idUsuario',  accessValidation ,moradorPageController);
