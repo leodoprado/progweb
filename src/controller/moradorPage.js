@@ -32,54 +32,40 @@ router.post('/login/morador/adicionar', (req, res) => {
     })
 })
 
-router.get('/login/administrador/gerencial/update', (req, res) => {
-    res.render("log/morador")
+router.get('/login/morador/apagar', (req, res) => {
+    res.render("log/apagarMorador")
 })
 
-router.post('/login/morador/update', (req, res) => {
-    idUsuario = req.body.idUsuario
-    Usuario.findOne({where:{idUsuario: idUsuario}}).then(id => {
+router.post('/login/morador/apagar', (req, res) => {
+    idMorador = req.body.idMorador;
+    Morador.findOne({where:{MOR_ID: idMorador}}).then(id => {
         var UsuarioExiste = (id != undefined)
         if(UsuarioExiste){
-            res.redirect(`/login/morador/update/${id.idUsuario}`);
+            res.redirect(`/login/morador/apagar/${id.MOR_ID}`);
         } else {
             res.redirect('/');
         }
     })
 })
 
-router.get('/login/morador/update/:idUsuario', (req, res) => {
-    Usuario.findOne({where: {idUsuario: idUsuario}}).then(function(dados){
+router.get('/login/morador/apagar/:idMorador', (req, res) => {
+    Morador.findOne({where: {MOR_ID: idMorador}}).then(function(dados){
         if(!dados) {
-            res.redirect(`/login/morador/update`)
+            res.redirect(`/login/morador`)
         } else {
-            res.render('log/updateMorador', { dados: dados})
+            res.render('log/confirmarMorador', { dados: dados})
         }
     })
 })
 
-router.post('/login/update/:idUsuario', (req, res) => {
-    var nome = req.body.nome;
-    var datanascimento = req.body.datanascimento;
-    var cpf = req.body.cpf;
-    var email = req.body.email;
-    var telefone1 = req.body.telefone1;
-
-    if(req.body !== ''){
-        Usuario.update({
-            nome: nome,
-            datanascimento: datanascimento,
-            cpf: cpf,
-            email : email,
-            telefone1 : telefone1,
-        },
-        {
-            where: {idUsuario : idUsuario}
-        });
-        res.redirect('/login/morador');
-    } else {
-        res.render('log/morador', { result : req.body})
-    }
+router.post('/login/morador/apagar/:idMorador', (req, res) => {
+    Morador.destroy ({
+        where: { MOR_ID: idMorador}
+    }).then(function(){
+        res.redirect('/login/morador')
+    }).catch(function(){
+        res.send('Erro: Usuario nao excluido com sucesso')
+    })
 })
 
 module.exports = router;
